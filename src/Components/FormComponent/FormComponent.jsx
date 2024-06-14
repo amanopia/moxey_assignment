@@ -1,40 +1,11 @@
-import { z } from "zod";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import clientDataArray from "@/assets/initialSeedData";
 // Drawer imports
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CloseIcon from "@mui/icons-material/Close";
-
-const formSchema = z.object({
-  email: z.string({
-    required_error: "Required Field",
-    invalid_type_error: "Only characters allowed",
-  }),
-  first_name: z.string({
-    required_error: "Required Field",
-    message: "ada",
-    invalid_type_error: "Only characters allowed",
-  }),
-  last_name: z.string({
-    required_error: "Required Field",
-    invalid_type_error: "Only characters allowed",
-  }),
-  user_role: z.enum([""]),
-  country: z.string(),
-  supervisor: z.enum([]),
-  mobile_number: z.string({
-    required_error: "Required Field",
-  }),
-  card_load_limit: z.number().nonnegative({
-    required_error: "Required Field",
-  }),
-  payment_limit: z.number().nonnegative({
-    required_error: "Required Field",
-  }),
-});
 
 const FormComponent = ({
   isDrawerOpen,

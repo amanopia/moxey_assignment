@@ -4,6 +4,8 @@
 
 - Customer ID is randomly generated, the code to which can be found inside the Form component
 - The following API is being used: [REST Countries API](https://restcountries.com/v3.1/all?fields=name,idd)
+- I have used shadcnui for table and dropdown for ACTIVE/INACTIVE
+- Material UI has been used for Drawer
 
 # React + Vite
 
