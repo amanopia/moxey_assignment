@@ -1,3 +1,10 @@
+# Additional points
+
+- The Active button can be used to toggle between INACTIVE and ACTIVE Subscriptions
+
+- Customer ID is randomly generated, the code to which can be found inside the Form component
+- The following API is being used: [REST Countries API](https://restcountries.com/v3.1/all?fields=name,idd)
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
