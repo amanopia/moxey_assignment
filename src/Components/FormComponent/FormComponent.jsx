@@ -48,12 +48,45 @@ const FormComponent = ({
     formState: { errors },
   } = useForm();
 
+  function generateCustomerId() {
+    const prefix = "CUST";
+    const fourDigitNumber = Math.floor(1000 + Math.random() * 9000);
+    const threeLetterCode = generateRandomLetters(3);
+    const randomAlphanumeric = generateRandomAlphanumeric(6);
+    return `${prefix}-${fourDigitNumber}-${threeLetterCode}-${randomAlphanumeric}`;
+  }
+
+  function generateRandomLetters(length) {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  function generateRandomAlphanumeric(length) {
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
   const onSubmit = (data) => {
+    data.user_id = generateCustomerId();
     clientDataArray.push(data);
     console.log(clientDataArray);
     customerDataGetter(clientDataArray);
 
-    toggler();
+    const noErrors = Object.keys(errors).length === 0;
+
+    if (noErrors) {
+      toggler();
+    }
   };
 
   const form = (
@@ -198,7 +231,12 @@ const FormComponent = ({
           className="bg-green-500 px-4 py-1 rounded-md font-medium text-white mt-10 cursor-pointer"
           value="+ Add User"
         />
-        <button className="bg-slate-100 px-4 py-1 rounded-md font-medium mt-10">
+        <button
+          className="bg-slate-100 px-4 py-1 rounded-md font-medium mt-10"
+          onClick={(event) => {
+            event.preventDefault();
+            toggler();
+          }}>
           Cancel
         </button>
       </div>

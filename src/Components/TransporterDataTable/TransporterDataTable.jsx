@@ -19,18 +19,11 @@ import {
 const TransporterDataTable = ({ clientDataArray }) => {
   const [activeState, setActiveState] = useState("ACTIVE");
 
-  let initialDataArray = clientDataArray.filter(
+  // Filter data based on activeState whenever it changes
+  const filteredData = clientDataArray.filter(
     (object) => object.status === activeState
   );
 
-  useEffect(() => {
-    initialDataArray = clientDataArray.filter(
-      (object) => object.status === activeState
-    );
-    setClientDataArray(initialDataArray);
-  }, [activeState]);
-
-  const [dataArray, setClientDataArray] = useState(initialDataArray);
   return (
     <div>
       <Table className="text">
@@ -61,7 +54,6 @@ const TransporterDataTable = ({ clientDataArray }) => {
                   setActiveState(
                     activeState === "ACTIVE" ? "INACTIVE" : "ACTIVE"
                   );
-                  setClientDataArray(initialDataArray);
                 }}>
                 {activeState === "ACTIVE" ? "INACTIVE" : "ACTIVE"}
               </DropdownMenuItem>
@@ -70,7 +62,7 @@ const TransporterDataTable = ({ clientDataArray }) => {
         </TableRow>
 
         <TableBody>
-          {dataArray.map((element) => (
+          {filteredData.map((element) => (
             <TableRow className="text-sm wrapper" key={element.user_id}>
               <TableCell
                 className={`text-xs text-center cell cell-padding ${
