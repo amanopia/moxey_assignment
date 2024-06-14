@@ -1,10 +1,11 @@
 import React from "react";
-import TransporterDataTable from "./Components/TransporterDataTable.jsx";
+import TransporterDataTable from "./Components/TransporterDataTable/TransporterDataTable.jsx";
+import Wrapper from "./Components/Wrapper/Wrapper.jsx";
 
 const App = () => {
   return (
     <div>
-      <TransporterDataTable></TransporterDataTable>
+      <Wrapper></Wrapper>
     </div>
   );
 };
